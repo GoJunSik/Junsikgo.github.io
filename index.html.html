@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="광운대학교 경영학부 고준식의 금융·증권·재무 포트폴리오">
+<title>GO JUNSIK — Finance Portfolio</title>
+<style>
+:root{
+  --ink:#101b2b;--navy:#0a1422;--navy2:#102238;--panel:#14283e;
+  --paper:#f4f6f8;--white:#fff;--muted:#a9b6c5;--muted2:#6e7d8e;
+  --line:rgba(203,218,233,.14);--gold:#c8a96b;--mint:#76c6b0;
+  --blue:#77b8d8;--red:#d78b8b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Pretendard,"Noto Sans KR","Malgun Gothic",Arial,sans-serif;background:var(--navy);color:#f4f7fa;line-height:1.7}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1160px,calc(100% - 48px));margin:0 auto}
+.topline{height:4px;background:linear-gradient(90deg,var(--gold),#e4d2a8 45%,var(--mint))}
+header{position:sticky;top:0;z-index:10;background:rgba(10,20,34,.91);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-size:15px;font-weight:850;letter-spacing:.16em}.logo span{color:var(--gold)}
+.navlinks{display:flex;gap:30px;color:#bdc8d4;font-size:11px;font-weight:700;letter-spacing:.13em}
+.navlinks a{transition:color .2s}.navlinks a:hover{color:var(--gold)}
+.nav-tag{border:1px solid rgba(200,169,107,.45);padding:7px 12px;color:var(--gold);font-size:10px;letter-spacing:.12em}
+.hero{position:relative;overflow:hidden;padding:104px 0 82px;background:linear-gradient(115deg,#0b1727 0%,#10243a 58%,#0b1929 100%);border-bottom:1px solid var(--line)}
+.hero:before{content:"";position:absolute;width:600px;height:600px;border:1px solid rgba(200,169,107,.09);border-radius:50%;right:-130px;top:-290px;box-shadow:0 0 0 55px rgba(200,169,107,.025),0 0 0 110px rgba(200,169,107,.02)}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+.eyebrow{display:flex;align-items:center;gap:12px;color:var(--gold);font-size:10px;font-weight:800;letter-spacing:.24em}
+.eyebrow:before{content:"";width:28px;height:1px;background:var(--gold)}
+h1{font-size:clamp(43px,6vw,70px);line-height:1.2;letter-spacing:-.065em;margin-top:26px;font-weight:750}
+h1 em{font-style:normal;color:var(--gold)}
+.subtitle{margin-top:22px;color:#d4dde6;font-size:16px;font-weight:500}
+.hero-copy{max-width:650px;margin-top:20px;color:#aebdcb;font-size:14px;line-height:2.05;word-break:keep-all}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;font-size:11px;font-weight:750;letter-spacing:.08em;border:1px solid rgba(214,226,238,.25);transition:.2s}
+.btn.primary{background:var(--gold);color:#172131;border-color:var(--gold)}
+.btn:hover{transform:translateY(-2px);border-color:var(--gold)}
+.market-card{position:relative;padding:25px 25px 20px;background:linear-gradient(145deg,rgba(24,47,70,.94),rgba(13,29,47,.96));border:1px solid rgba(200,169,107,.25);box-shadow:0 25px 70px rgba(0,0,0,.22)}
+.market-head{display:flex;justify-content:space-between;align-items:center;color:#b5c2ce;font-size:10px;letter-spacing:.13em}
+.market-head strong{color:var(--gold);font-weight:700}
+.market-title{font-size:19px;font-weight:700;margin-top:22px}
+.market-caption{color:#8fa0b1;font-size:11px;margin-top:2px}
+.chart{width:100%;height:155px;margin-top:15px;display:block}
+.chart-labels{display:flex;justify-content:space-between;color:#77899b;font-size:9px;letter-spacing:.08em}
+.market-bottom{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:16px;margin-top:17px}
+.market-bottom span{display:block;color:#8fa0b1;font-size:9px;letter-spacing:.1em}
+.market-bottom b{display:block;color:#e6edf3;font-size:13px;margin-top:4px}
+.market-bottom .accent{color:var(--mint)}
+.ticker{border-bottom:1px solid var(--line);background:#0d1a2a}
+.ticker-inner{min-height:54px;display:flex;align-items:center;gap:34px;overflow:hidden;white-space:nowrap}
+.ticker-label{color:var(--gold);font-size:9px;font-weight:800;letter-spacing:.18em}
+.ticker-item{font-size:10px;color:#9baaba;letter-spacing:.04em}
+.ticker-item b{color:#e0e7ee;font-weight:650;margin-right:7px}
+section{padding:86px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:31px}
+.kicker{color:var(--gold);font-size:10px;font-weight:850;letter-spacing:.22em}
+h2{font-size:31px;letter-spacing:-.045em;margin-top:9px}
+.section-desc{max-width:480px;color:#96a7b8;font-size:12px;line-height:1.9}
+.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px}
+.identity,.about-copy{background:var(--paper);color:var(--ink);padding:29px 30px}
+.identity{background:#e9edf1}
+.identity-label{font-size:9px;color:#718092;letter-spacing:.17em;font-weight:800}
+.identity-name{font-size:25px;font-weight:800;letter-spacing:-.04em;margin-top:12px}
+.identity-school{font-size:12px;color:#596a7b;margin-top:4px}
+.identity-rule{height:1px;background:#cbd3dc;margin:23px 0 18px}
+.identity-meta{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.identity-meta span{display:block;font-size:9px;color:#718092;letter-spacing:.1em}
+.identity-meta b{display:block;font-size:12px;margin-top:5px}
+.about-copy{background:#14283e;color:#edf2f6;border:1px solid var(--line)}
+.about-copy .small-label{color:var(--gold);font-size:9px;letter-spacing:.18em;font-weight:800}
+.about-copy p{margin-top:14px;color:#b5c2ce;font-size:13px;line-height:2.05;word-break:keep-all}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.pill{font-size:9px;letter-spacing:.04em;padding:7px 10px;border:1px solid rgba(200,169,107,.27);color:#d7c49f}
+.fields{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.field{background:#101f31;padding:27px 25px;min-height:200px;transition:background .2s}
+.field:hover{background:#172b41}
+.field-top{display:flex;justify-content:space-between;align-items:center}
+.field-no{color:var(--gold);font-size:10px;font-weight:800;letter-spacing:.14em}
+.field-mark{font-size:17px;color:#72869a}
+.field h3{font-size:17px;margin-top:25px;letter-spacing:-.025em}
+.field p{color:#9eafbf;font-size:11px;line-height:1.9;margin-top:9px;word-break:keep-all}
+.learning{background:#0d1b2b;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.learning-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:31px}
+.learning-card{padding:23px 22px;border:1px solid var(--line);background:#12243a}
+.learning-card .step{font-size:9px;color:var(--gold);font-weight:800;letter-spacing:.16em}
+.learning-card h3{font-size:15px;margin-top:13px}
+.learning-card p{font-size:11px;color:#9eafbf;margin-top:8px;line-height:1.9}
+.project-box{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;padding:30px;background:linear-gradient(110deg,#14283e,#102136);border:1px solid rgba(200,169,107,.22);margin-top:30px}
+.project-tag{font-size:9px;color:var(--gold);font-weight:800;letter-spacing:.16em}
+.project-box h3{font-size:20px;margin-top:9px}
+.project-box p{font-size:12px;color:#a8b7c6;max-width:720px;margin-top:10px;line-height:1.95}
+.project-side{border-left:1px solid var(--line);padding-left:28px;min-width:145px}
+.project-side span{display:block;color:#8294a6;font-size:9px;letter-spacing:.1em}
+.project-side b{display:block;color:var(--gold);font-size:13px;margin-top:5px}
+.vision{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:29px}
+.vision-card{padding:25px;border:1px solid var(--line);background:#12243a}
+.vision-card span{color:var(--gold);font-size:9px;letter-spacing:.16em;font-weight:800}
+.vision-card h3{font-size:16px;margin-top:11px}
+.vision-card p{color:#9eafbf;font-size:11px;line-height:1.9;margin-top:8px}
+.disclaimer{color:#6f8194;font-size:10px;margin-top:20px}
+footer{border-top:1px solid var(--line);padding:25px 0 35px;color:#74869a;font-size:9px;letter-spacing:.1em}
+.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:800px){.hero-grid{grid-template-columns:1fr;gap:38px}.market-card{max-width:540px}.fields{grid-template-columns:repeat(2,1fr)}.about-grid{grid-template-columns:1fr}.section-head{display:block}.section-desc{margin-top:13px}.navlinks{gap:15px}}
+@media(max-width:520px){.wrap{width:calc(100% - 32px)}.nav{height:66px}.navlinks{gap:10px;font-size:9px}.nav-tag{display:none}.hero{padding:75px 0 58px}h1{font-size:43px}.ticker-inner{gap:22px}.ticker-item:nth-of-type(n+4){display:none}section{padding:65px 0}.fields,.learning-grid,.vision{grid-template-columns:1fr}.field{min-height:165px}.project-box{grid-template-columns:1fr}.project-side{border-left:0;border-top:1px solid var(--line);padding:16px 0 0}.identity-meta{grid-template-columns:1fr 1fr}h2{font-size:27px}}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#">GO JUNSIK<span>.</span></a>
+    <nav class="navlinks" aria-label="주요 메뉴">
+      <a href="#about">PROFILE</a><a href="#finance">FINANCE</a><a href="#study">STUDY</a><a href="#vision">VISION</a>
+    </nav>
+    <div class="nav-tag">PERSONAL PORTFOLIO</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">FINANCE · SECURITIES · CORPORATE FINANCE</div>
+      <h1>숫자 너머의 가치를 읽고,<br><em>금융의 흐름을 이해합니다.</em></h1>
+      <p class="subtitle">고준식 <span style="color:#71869a">/</span> 광운대학교 경영학부</p>
+      <p class="hero-copy">
+        금융시장의 움직임과 기업의 재무적 의사결정에 관심을 가지고 있습니다.
+        회계와 재무의 기초부터 증권시장, 기업가치 분석까지 꾸준히 학습하며
+        데이터에 근거해 생각하고 논리적으로 판단하는 금융 인재로 성장하고자 합니다.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#finance">EXPLORE MY INTEREST</a>
+        <a class="btn" href="#about">VIEW PROFILE</a>
+      </div>
+    </div>
+    <aside class="market-card" aria-label="장식용 금융 차트">
+      <div class="market-head"><span>MARKET INSIGHT / CONCEPT</span><strong>FINANCE</strong></div>
+      <div class="market-title">Beyond the Numbers</div>
+      <div class="market-caption">A perspective on markets, value &amp; capital</div>
+      <svg class="chart" viewBox="0 0 440 155" role="img" aria-label="상승과 하락이 반복되는 추상적인 시장 흐름 그래프">
+        <defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#c8a96b" stop-opacity=".28"/><stop offset="1" stop-color="#c8a96b" stop-opacity="0"/></linearGradient></defs>
+        <g stroke="#9db0c2" stroke-opacity=".13" stroke-width="1"><path d="M0 25H440M0 65H440M0 105H440M0 145H440"/></g>
+        <path d="M0 126 C25 119 32 128 52 105 S83 98 103 108 S132 75 151 86 S183 66 203 79 S233 47 253 60 S285 42 305 53 S336 26 354 39 S390 17 440 10 L440 155 L0 155Z" fill="url(#area)"/>
+        <path d="M0 126 C25 119 32 128 52 105 S83 98 103 108 S132 75 151 86 S183 66 203 79 S233 47 253 60 S285 42 305 53 S336 26 354 39 S390 17 440 10" fill="none" stroke="#c8a96b" stroke-width="2.5"/>
+        <circle cx="354" cy="39" r="4" fill="#76c6b0" stroke="#0d1d2f" stroke-width="2"/>
+      </svg>
+      <div class="chart-labels"><span>ANALYSIS</span><span>VALUE</span><span>STRATEGY</span><span>GROWTH</span></div>
+      <div class="market-bottom">
+        <div><span>ACADEMIC FIELD</span><b>Business</b></div>
+        <div><span>AREA OF INTEREST</span><b class="accent">Finance</b></div>
+        <div><span>APPROACH</span><b>Data-driven</b></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<div class="ticker">
+  <div class="wrap ticker-inner">
+    <span class="ticker-label">AREAS OF FOCUS</span>
+    <span class="ticker-item"><b>01</b> FINANCIAL MARKETS</span>
+    <span class="ticker-item"><b>02</b> SECURITIES</span>
+    <span class="ticker-item"><b>03</b> CORPORATE FINANCE</span>
+    <span class="ticker-item"><b>04</b> VALUATION</span>
+    <span class="ticker-item"><b>05</b> RISK MANAGEMENT</span>
+  </div>
+</div>
+
+<main>
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">01 / PROFILE</div><h2>금융을 공부하는 경영학도</h2></div>
+      <p class="section-desc">시장과 기업을 입체적으로 바라보고, 근거 있는 판단을 내리는 사람으로 성장하고 싶습니다.</p>
+    </div>
+    <div class="about-grid">
+      <div class="identity">
+        <div class="identity-label">PERSONAL INFORMATION</div>
+        <div class="identity-name">고준식 <span style="font-size:12px;color:#718092;letter-spacing:.04em">GO JUNSIK</span></div>
+        <div class="identity-school">Kwangwoon University</div>
+        <div class="identity-rule"></div>
+        <div class="identity-meta">
+          <div><span>DEPARTMENT</span><b>경영학부</b></div>
+          <div><span>INTEREST</span><b>금융 · 증권 · 재무</b></div>
+        </div>
+      </div>
+      <div class="about-copy">
+        <div class="small-label">MY PERSPECTIVE</div>
+        <p>단편적인 수치에 머무르기보다 숫자가 만들어진 배경과 의미를 이해하는 태도를 중요하게 생각합니다. 기업의 재무 상태와 산업 환경, 시장의 흐름을 함께 살피며 데이터를 바탕으로 논리적인 관점을 세우는 역량을 키워가고 있습니다.</p>
+        <div class="pill-row"><span class="pill">ANALYTICAL THINKING</span><span class="pill">FINANCIAL LITERACY</span><span class="pill">CONTINUOUS LEARNING</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="finance" style="background:#0d1a29;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">02 / AREAS OF INTEREST</div><h2>금융 · 증권 · 재무</h2></div>
+      <p class="section-desc">관심 분야를 중심으로 이론과 실제 사례를 연결해 이해의 폭을 넓히고자 합니다.</p>
+    </div>
+    <div class="fields">
+      <article class="field"><div class="field-top"><span class="field-no">01 / MARKETS</span><span class="field-mark">↗</span></div><h3>금융시장</h3><p>금리, 환율, 채권 및 주식시장의 움직임을 살피고 거시경제 변화가 금융시장에 미치는 영향을 이해합니다.</p></article>
+      <article class="field"><div class="field-top"><span class="field-no">02 / SECURITIES</span><span class="field-mark">◇</span></div><h3>증권 및 투자</h3><p>주식과 채권 등 금융상품의 특성을 학습하고, 기업과 시장을 분석해 투자 판단의 근거를 찾습니다.</p></article>
+      <article class="field"><div class="field-top"><span class="field-no">03 / CORPORATE FINANCE</span><span class="field-mark">▤</span></div><h3>기업재무</h3><p>재무제표, 현금흐름, 자본구조와 기업가치 평가를 통해 기업의 재무적 의사결정을 이해합니다.</p></article>
+      <article class="field"><div class="field-top"><span class="field-no">04 / VALUATION</span><span class="field-mark">⌁</span></div><h3>기업가치 분석</h3><p>기업의 사업 모델과 산업 구조, 성장 요인 및 위험 요소를 함께 살펴 가치 평가의 관점을 기릅니다.</p></article>
+      <article class="field"><div class="field-top"><span class="field-no">05 / RISK</span><span class="field-mark">◎</span></div><h3>리스크 관리</h3><p>수익률뿐 아니라 변동성과 손실 가능성도 고려하며 위험과 수익의 균형을 이해하고자 합니다.</p></article>
+      <article class="field"><div class="field-top"><span class="field-no">06 / DATA</span><span class="field-mark">▥</span></div><h3>금융 데이터 분석</h3><p>정량적 자료와 시장 데이터를 읽고 핵심 지표를 해석해 객관적인 분석으로 연결하는 방법을 배웁니다.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="learning" id="study">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">03 / LEARNING ROADMAP</div><h2>전문성을 쌓아가는 과정</h2></div>
+      <p class="section-desc">관심을 실제 역량으로 발전시키기 위한 학습 방향입니다.</p>
+    </div>
+    <div class="learning-grid">
+      <article class="learning-card"><div class="step">STEP 01 / FOUNDATION</div><h3>금융 기초 다지기</h3><p>회계, 재무관리, 경제학의 핵심 개념을 이해하고 금융시장에 대한 기본기를 쌓습니다.</p></article>
+      <article class="learning-card"><div class="step">STEP 02 / ANALYSIS</div><h3>분석 역량 강화</h3><p>재무제표와 기업가치, 산업 및 시장 데이터를 활용해 분석하는 연습을 합니다.</p></article>
+      <article class="learning-card"><div class="step">STEP 03 / APPLICATION</div><h3>실제 사례에 적용</h3><p>기업 분석 리포트와 금융 이슈 스터디를 통해 학습한 내용을 실제 사례에 연결합니다.</p></article>
+    </div>
+    <p class="disclaimer">※ 위 내용은 현재 보유한 자격이나 경력을 의미하지 않으며, 앞으로의 학습 및 성장 방향을 나타냅니다.</p>
+  </div>
+</section>
+
+<section id="vision">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">04 / VISION</div><h2>분석을 넘어 신뢰할 수 있는 판단으로</h2></div>
+      <p class="section-desc">금융 지식과 분석 역량을 꾸준히 쌓아 전문성을 갖춘 인재로 성장하겠습니다.</p>
+    </div>
+    <div class="vision">
+      <article class="vision-card"><span>MY DIRECTION</span><h3>깊이 있는 금융 이해</h3><p>금융시장과 기업재무에 대한 기초를 탄탄히 다지고, 실제 사례를 통해 분석 경험을 넓혀가겠습니다.</p></article>
+      <article class="vision-card"><span>MY COMMITMENT</span><h3>근거 중심의 사고</h3><p>수치와 정보의 의미를 비판적으로 살피고, 논리와 데이터에 기반해 의견을 제시하는 역량을 기르겠습니다.</p></article>
+    </div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap foot"><span>© 2026 GO JUNSIK. PERSONAL PORTFOLIO.</span><span>KWANGWOON UNIVERSITY · BUSINESS ADMINISTRATION</span></div></footer>
+</body>
+</html>
